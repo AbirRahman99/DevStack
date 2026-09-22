@@ -1,2 +1,46 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+/* Theme variables. */
+@theme {
+    --font-display: "Plus Jakarta Sans", sans-serif;
+
+    --color-background: #FFFFFF;
+    --color-nav-text: #475569;
+    --color-nav-home: #DB2777;
+    --color-nav-signin: #334155;
+    --color-nav-signup-bg: #D91B7E;
+    --color-nav-signup-text: #ffffff;
+    --color-text: #0f172A;
+    --color-learnmore: #374151;
+    --color-learnmore-bg: #E5E7EB;
+    --color-learnmore-border: #E5E7EB;
+    --color-banner-text: #475569;
+    --color-gradient-giantsorange: #F97316;
+    --color-gradient-magentapink: #D81B7E;
+    --color-gradient-brightviolet: #7C3AED;
+    --color-gradient-vividrose: #EC4899;
+    --color-gradient-mediumslateblue: #8B5CF6;
+    --color-text-h: #64748B;
+    --color-frontend-text: #475569;
+    --color-frontend-bg: #F1F5F9;
+    --color-rating: #FBBF24;
+    --color-rating-text: #334155;
+    --color-button-text: #ffffff;
+    --color-button-bg: #0A0F1D;
+    --color-footer-text: #64748B;
+    --color-footer-t: #0F172A;
+    
+}
+@layer base {
+html{
+scroll-behavior: smooth;}
+body {
+min-width: 320px;
+color: var(--color-text);
+background: var(--color-background);
+font-family: var(--font-display);
+}
+}
