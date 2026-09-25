@@ -1,9 +1,23 @@
 import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import type { Itechnologies } from '../../Types/Technologies';
+import { toast } from 'react-toastify';
 
-
-const TechnologyCard = ({technology}:{technology: Itechnologies}) => {
+interface TechnologyCardProps {
+  technology: Itechnologies;
+  selectedTechnologies: Itechnologies[];
+  setSelectedTechnologies: React.Dispatch<React.SetStateAction<Itechnologies[]>>;
+}
+const TechnologyCard = ({ technology, selectedTechnologies, setSelectedTechnologies }: TechnologyCardProps) => {
+    const isSelected = selectedTechnologies?.some((item) => item.id === technology.id);
+    const handleSelect = () => {
+    if (isSelected) {
+      toast.warning(`${technology.name} is already in your stack!`);
+      return;
+    }
+    setSelectedTechnologies((prev) => [...(prev || []), technology]);
+    toast.success(`${technology.name} added to your stack!`);
+  };
     return (
         <div>
             
@@ -46,8 +60,16 @@ const TechnologyCard = ({technology}:{technology: Itechnologies}) => {
                           </span>
                         </div>
                       </div>
-                      <button className="w-full bg-text text-background py-3.5 rounded-xl font-medium hover:bg-learnmore transition-all duration-200 mt-auto">
-                        Add to Stack
+                      <button
+                        onClick={handleSelect}
+                        disabled={isSelected}
+                        className={`w-full py-3.5 rounded-xl font-medium transition-all duration-200 mt-auto ${
+                          isSelected
+                            ? 'bg-frontend-bg text-text- cursor-not-allowed'
+                            : 'bg-text text-background hover:bg-learnmore'
+                        }`}
+                      >
+                        {isSelected ? '✓ Added to Stack' : 'Add to Stack'}
                       </button>
                     </div>
                 

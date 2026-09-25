@@ -1,9 +1,10 @@
 @import "tailwindcss";
-@import "daisyui";
+@plugin "daisyui";
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
 
 
 /* Theme variables. */
+/* Tailwind CSS v4 theme directive. */
 @theme {
     --font-display: "Plus Jakarta Sans", sans-serif;
 
@@ -34,7 +35,11 @@
     --color-footer-t: #0F172A;
     --color-badge: #00A6F4;
     --color-badge-bg: #F0F9FF;
-    --color-border-line: #F8FAFC
+    --color-border-line: #F8FAFC;
+    --color-remove: #D82C20;
+    --color-remove-border:#ED8C85;
+    --color-remove-bg: #fef2f2;
+    --color-line-border: #94A3B8
 }
 @layer base {
 html{

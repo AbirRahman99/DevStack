@@ -1,6 +1,7 @@
-import React, {use} from "react";
+import {use, useState} from "react";
 import type { Itechnologies } from "../../Types/Technologies";
 import Technology from "./Technology";
+import YourStack from "./YourStack";
 
 interface Technologiesprops {
   technologiesPromise: Promise<Itechnologies[]>
@@ -8,7 +9,7 @@ interface Technologiesprops {
 const Technologies = ({ technologiesPromise }:Technologiesprops) => {
     
     const technologies = use(technologiesPromise);
-    console.log(technologies);
+    const [selectedTechnologies, setSelectedTechnologies] = useState<Itechnologies[]>([]);
     return (
         <div className=" container mx-auto ">
          <div className="mb-10 text-center md:text-left">
@@ -22,12 +23,19 @@ const Technologies = ({ technologiesPromise }:Technologiesprops) => {
         Pick one technology per category to build your ideal stack.
       </p>
     </div>
-         <div>
+         <div className="flex justify-between gap-8">
             <div className="w-3/4">
-            <Technology technologies={technologies}/>
+            <Technology
+              technologies={technologies}
+              selectedTechnologies={selectedTechnologies}
+              setSelectedTechnologies={setSelectedTechnologies}
+            />
             </div>
 
-            <div className="w-1/4"></div>
+            <div className="w-1/4">
+            <YourStack technologies={selectedTechnologies}
+            setSelectedTechnologies={setSelectedTechnologies}/>
+            </div>
          </div>
             
             
